@@ -1,0 +1,13 @@
+<h1>Create a new Post</h1>
+
+<form action="/posts/create-new/{{theCountry}}/{{theCity}}" method="POST" enctype="multipart/form-data">
+    <label>Title</label>
+    <input type="text" name="title">
+
+    <input type="file" name="thePic">
+   
+    <label>content</label>
+    <textarea name="content" cols="30" rows="10"></textarea>
+
+    <button>Create</button>
+</form>

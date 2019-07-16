@@ -1,1 +1,45 @@
 <h1>posts with Country</h1>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Select Cities</button>
+  <div id="myDropdown" class="dropdown-content">  
+    {{#each cities}}
+        <a href='/posts/{{../country}}/{{this}}'>{{this}}</a>
+    {{/each}}
+  </div>
+</div>
+
+
+<a href="/posts/create-new/{{country}}">Create a new Post</a>
+
+
+{{#each posts}}
+
+<div>
+    <hr>
+
+    <h3>{{this.title}}</h3>
+
+    <p>{{this.content}}</p>
+
+    <p>by: {{this.author.username}}</p>
+
+    <hr>
+
+    {{#if this.owned}}
+
+    <form action="/posts/delete/{{this._id}}/{{this.country}}" method="POST">
+      <button>Delete This Post</button>
+    </form>
+
+    <button>
+
+      <a href="/posts/edit/{{this._id}}/country">Edit This Post</a>
+
+    </button>
+    {{/if}}
+
+</div>
+
+{{/each}}
+

@@ -1,6 +1,19 @@
 <h1>Posts</h1>
 
-{{!-- {{#each posts}}
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Select Countries</button>
+  <div id="myDropdown" class="dropdown-content">
+    {{#each countries}}
+        <a href='/posts/{{this}}'>{{this}}</a>
+    {{/each}}
+  </div>
+</div>
+
+
+
+
+{{#each posts}}
 
 <div>
     <hr>
@@ -17,8 +30,17 @@
 
     <form action="/posts/delete/{{this._id}}" method="POST"><button>Delete This Post</button></form>
 
+    <button>
+
+      <a href="/posts/edit/{{this._id}}">Edit This Post</a>
+
+    </button>
     {{/if}}
+
+
+
+
 
 </div>
 
-{{/each}} --}}
+{{/each}}

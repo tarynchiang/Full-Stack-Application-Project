@@ -10,7 +10,7 @@ const postSchema = new Schema ({
     city:String,
     likes:[{ type : Schema.Types.ObjectId, ref: 'User' }],
     img: String,
-    comments:[{ type : Schema.Types.ObjectId, ref: 'Comment' }]
+    comments:[{ type : Schema.Types.ObjectId, ref: 'Comment'}]
 })
 
 

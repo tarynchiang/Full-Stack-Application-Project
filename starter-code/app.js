@@ -16,6 +16,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
+const flash = require("connect-flash");
 
 mongoose
   .connect('mongodb://localhost/project2', {useNewUrlParser: true})
@@ -94,11 +95,13 @@ passport.use(new LocalStrategy((username, password, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(flash());
 
-
-
-
-
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  res.locals.msg         = req.flash('error')
+  next();
+});
 
 
 
