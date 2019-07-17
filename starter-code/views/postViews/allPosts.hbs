@@ -11,8 +11,6 @@
 </div>
 
 
-
-
 {{#each posts}}
 
 <div>
@@ -25,6 +23,7 @@
     <p>by: {{this.author.username}}</p>
 
     <hr>
+    <button class='LikesBtn' name={{this._id}}>Likes</button>
 
     {{#if this.owned}}
 
@@ -36,9 +35,22 @@
 
     </button>
     {{/if}}
+    
+    <div class="comments-sec">
+      {{#each this.comments}}
+        <h5>by {{this.author.username}}</h5>
+        <p>{{this.content}}</p>
+        {{#if this.owned}}
+          <button class='comment-delete' name={{../this._id}} id={{this._id}}>Delete</button>
+        {{/if}}
+      {{/each}}
+    </div>
 
-
-
+    <div>
+      <h5>comments</h5>
+      <input type="text" class='comments' id={{this._id}}>
+      <button class='comments-btn'>reply</button>
+    </div>
 
 
 </div>

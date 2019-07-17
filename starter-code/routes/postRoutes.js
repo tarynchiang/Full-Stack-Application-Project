@@ -1,13 +1,14 @@
 const express = require('express');
 const router  = express.Router();
 const Post    = require('../models/Post');
+const Comment = require('../models/Comment');
 const uploadPhoto = require('../config/cloundinary-setup');
 
 
 //see worldwide posts
 router.get('/posts',(req,res,next)=>{
     
-    Post.find().populate('author')
+    Post.find().populate('author').populate({path:'comments',populate:{path:'author'}})
     .then((allThePosts)=>{
 
         let allTheCountries = require ('full-countries-cities').getCountryNames();
@@ -17,6 +18,11 @@ router.get('/posts',(req,res,next)=>{
                 if(eachPost.author._id.equals(req.user._id)){
                     eachPost.owned = true;
                 }
+                eachPost.comments.forEach((eachComment)=>{
+                    if(eachComment.author._id.equals(req.user._id)){
+                        eachComment.owned = true;
+                    }
+                })
             })
         }
         res.render('postViews/allPosts',{posts: allThePosts, countries :allTheCountries})
@@ -37,6 +43,7 @@ router.get('/posts/create-new/:country',(req,res,next)=>{
 })
 
 router.post('/posts/create-new/:country',uploadPhoto.single('thePic'),(req,res,next)=>{
+
 
     let title = req.body.title;
     let content = req.body.content;
@@ -202,7 +209,7 @@ router.post('/posts/update/:postID/city', (req, res, next)=>{
 
 
 
-//delete the post under worldwide
+//delete the worldwide post 
 router.post('/posts/delete/:id', (req, res, next)=>{
 
     Post.findByIdAndRemove(req.params.id)
@@ -247,8 +254,7 @@ router.post('/posts/delete/:id/:country/:city', (req, res, next)=>{
 
 //see posts under country
 router.get('/posts/:country',(req,res,next)=>{
-
-    Post.find({country: req.params.country}).populate('author')
+    Post.find({country: req.params.country}).populate('author').populate({path:'comments',populate:{path:'author'}})
     .then((allThePosts)=>{
         console.log(req.params.country);
         if(req.user){
@@ -257,7 +263,13 @@ router.get('/posts/:country',(req,res,next)=>{
                 if(eachPost.author._id.equals(req.user._id)){
                     eachPost.owned = true;
                 }
+                eachPost.comments.forEach((eachComment)=>{
+                    if(eachComment.author._id.equals(req.user._id)){
+                        eachComment.owned = true;
+                    }
+                })
             })
+            
         }
         let allTheCities = require ('full-countries-cities').getCities(req.params.country);
         res.render('postViews/postsWithCountry',{posts: allThePosts, cities: allTheCities, country:req.params.country})
@@ -271,7 +283,7 @@ router.get('/posts/:country',(req,res,next)=>{
 //see posts under city
 router.get('/posts/:country/:city',(req,res,next)=>{
 
-    Post.find({country: req.params.country, city: req.params.city}).populate('author')
+    Post.find({country: req.params.country, city: req.params.city}).populate('author').populate({path:'comments',populate:{path:'author'}})
     .then((allThePosts)=>{
         if(req.user){
 
@@ -279,6 +291,11 @@ router.get('/posts/:country/:city',(req,res,next)=>{
                 if(eachPost.author._id.equals(req.user._id)){
                     eachPost.owned = true;
                 }
+                eachPost.comments.forEach((eachComment)=>{
+                    if(eachComment.author._id.equals(req.user._id)){
+                        eachComment.owned = true;
+                    }
+                })
             })
         }
         let allTheCountries = require ('full-countries-cities').getCountryNames();
