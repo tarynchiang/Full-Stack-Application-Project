@@ -313,6 +313,29 @@ router.get('/posts/:country/:city',(req,res,next)=>{
 
 
 
+router.post('/post/likes',(req,res,next)=>{
+    Post.findById(req.body.postID)
+    .then((thePost)=>{
+        if(!(req.user_id in thePost.comments)){
+        }
+        // if(!(req.user_id in thePost.comments)){
+        //     thePost.update({ $push: { likes: req.user_id })
+        //     .then(()=>{
+        //         console.log('success');
+        //     })
+        //     .catch((err)=>{
+        //         next(err);
+        //     })
+        // }
+        // }
+        // res.json(thePost);
+    })
+    .catch((err)=>{
+        next(err);
+    })
+})
+
+
 
 
 

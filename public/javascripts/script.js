@@ -58,16 +58,18 @@ for(let i=0;i<deleteBtn.length;i++){
 
 }
 
-let likesOB = {};
 let likesBtn = document.getElementsByClassName('LikesBtn');
 
 for(let i=0;i<likesBtn.length;i++){
   let postID = likesBtn[i].getAttribute("name");
-  if(!( postID in likesOB)){
-    likesOB.postID = 0;
-  }
   likesBtn[i].onclick = (e)=>{
-    likesOB.postID++;
+    axios.post('/posts/likes',{postID:postID})
+    .then(()=>{
+      location.reload();
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
     
   }
 
