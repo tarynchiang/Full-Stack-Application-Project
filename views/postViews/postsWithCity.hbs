@@ -1,69 +1,93 @@
-<h1>post with city</h1>
-
-
-<a href="/posts/create-new/{{theCountry}}/{{theCity}}">Create a new Post</a>
-
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Select Countries</button>
-  <div id="myDropdown" class="dropdown-content">
-    {{#each countries}}
-        <a href='/posts/{{this}}'>{{this}}</a>
-    {{/each}}
+<nav class="nav-bar">
+  <div class='logo-part'>
+    <img src="/images/logo.png" alt="logo">
+    <a href="/posts">Tragoler</a>
   </div>
-</div>
-
-
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Select Cities</button>
-  <div id="myDropdown" class="dropdown-content">  
-    {{#each cities}}
-        <a href='/posts/{{../country}}/{{this}}'>{{this}}</a>
-    {{/each}}
-  </div>
-</div>
-
-
-
-{{#each posts}}
-
-<div>
-    <hr>
-
-    <h3>{{this.title}}</h3>
-
-    <p>{{this.content}}</p>
-
-    <p>by: {{this.author.username}}</p>
-
-    <hr>
-
-    {{#if this.owned}}
-    <form action="/posts/delete/{{this._id}}/{{this.country}}/{{this.city}}" method="POST">
-      <button>Delete This Post</button>
+  <div class='sign-part'>
+    <form action="/logout" method="POST">
+      <button class="LogOutBtn">Log Out</button>
     </form>
-    
-    <button>
+  </div>
+</nav>
 
-      <a href="/posts/edit/{{this._id}}/city">Edit This Post</a>
+<section class='Post-layout'>
 
-    </button>
-    {{/if}}
-    <div class="comments-sec">
-      {{#each this.comments}}
-        <h5>by {{this.author.username}}</h5>
-        <p>{{this.content}}</p>
-        {{#if this.owned}}
-          <button class='comment-delete' name={{../this._id}} id={{this._id}}>Delete</button>
-        {{/if}}
+  <h1>Check the most popular place today</h1>
+
+  
+  <div class="dropdown">
+    <div class='dropdown-sec1'>
+    <h3>Filter by:</h3>
+      
+      <select name="select-country" onchange="location = this.value;">
+      <option value="">Select-country</option>
+      {{#each countries}}
+        <option value="/posts/{{this}}">{{this}}</option>
       {{/each}}
+      </select>
+
+      <select name="select-city" onchange="location = this.value;">
+      <option value="">Select-City</option>
+      {{#each cities}}
+        <option value="/posts/{{../theCountry}}/{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    
     </div>
+    <a href="/posts/create-new/{{theCountry}}/{{theCity}}"><img src="/images/create.png" alt="create"></a>
+  </div>
 
-    <div>
-      <h5>comments</h5>
-      <input type="text" class='comments' id={{this._id}}>
-      <button class='comments-btn'>reply</button>
-    </div>
+  
+  {{#each posts}}
 
-</div>
+  <div class='eachPost-layout'>
 
-{{/each}}
+      <div class="title">
+
+        <h3>{{this.author.username}}</h3>
+
+        {{#if this.owned}}
+          <div>
+
+            <form action="/posts/delete/{{this._id}}/{{this.country}}/{{this.city}}" method="POST">
+              <button class="deleteBtn"><img src="/images/delete.png" alt="deleteBtn"></button>
+            </form>
+
+            <button class="editBtn">
+              <a href="/posts/edit/{{this._id}}/city"><img src="/images/edit.png" alt="editBtn"></a>
+            </button>
+
+          </div>
+        {{/if}}
+      </div>
+
+        <p>{{this.content}}</p>
+          
+          <button class='LikesBtn' name={{this._id}}>Likes {{this.likes.length}}</button>
+          
+          <button class="viewComments">Comments</button>
+        
+      
+      <div class="comments-sec">
+        {{#each this.comments}}
+          <div class='eachComment'>
+
+            <p><b>{{this.author.username}}:</b> {{this.content}}</p>
+            {{#if this.owned}}
+              <button class='comment-delete' name={{../this._id}} id={{this._id}}><img src="/images/delete.png" alt="deleteBtn"></button>
+            {{/if}}
+
+          </div>
+        {{/each}}
+      </div>
+
+      <div>
+        <input type="text" class='comments' id={{this._id}} value="Add a comment">
+        <button class='comments-btn'>reply</button>
+      </div>
+
+  </div>
+
+  {{/each}}
+
+</section>

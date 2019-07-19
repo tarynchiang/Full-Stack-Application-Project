@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('IronGenerator JS imported successfully!');
 
-}, false);
-
 
 
 
@@ -40,6 +38,27 @@ for(let i=0;i<buttons.length;i++){
   }
 }
 
+// let commentBox = document.getElementsByClassName('comments')
+// for(let i=0;i<commentBox.length;i++){
+//   commentBox[i].onclick = (e)=>{
+
+//   }
+// }
+
+let commentViews = document.getElementsByClassName('viewComments');
+let sections = document.getElementsByClassName('comments-sec');
+for(let i=0;i<commentViews.length;i++){
+  commentViews[i].onclick = (e)=>{
+
+    if(sections[i].classList.contains('hidden')){
+      sections[i].classList.remove('hidden');
+    }else{
+      sections[i].classList.add('hidden');
+    }
+  }
+}
+
+
 let deleteBtn = document.getElementsByClassName('comment-delete');
 
 for(let i=0;i<deleteBtn.length;i++){
@@ -63,7 +82,7 @@ let likesBtn = document.getElementsByClassName('LikesBtn');
 for(let i=0;i<likesBtn.length;i++){
   let postID = likesBtn[i].getAttribute("name");
   likesBtn[i].onclick = (e)=>{
-    axios.post('/posts/likes',{postID:postID})
+    axios.post('/post/likes',{postID:postID})
     .then(()=>{
       location.reload();
     })
@@ -80,3 +99,13 @@ for(let i=0;i<likesBtn.length;i++){
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
+
+
+
+$(document).ready(function() { // When page finished loading
+  if ( $('.flash').length ) { // if there is an DOM that has class has-error
+     $('#changePasswordModal').modal('show'); // Show Modal
+  }
+});
+
+}, false);

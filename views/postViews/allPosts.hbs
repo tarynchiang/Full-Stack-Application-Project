@@ -1,58 +1,88 @@
-<h1>Posts</h1>
+<nav class="nav-bar">
+        <div class='logo-part'>
+            <img src="/images/logo.png" alt="logo">
+            <a href="/posts">Tragoler</a>
+        </div>
+        <div class='sign-part'>
+            <form action="/logout" method="POST">
+              <button class="LogOutBtn">Log Out</button>
+            </form>
+        </div>
+</nav>
 
+<section class='Post-layout'>
 
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Select Countries</button>
-  <div id="myDropdown" class="dropdown-content">
-    {{#each countries}}
-        <a href='/posts/{{this}}'>{{this}}</a>
-    {{/each}}
-  </div>
-</div>
+  <h1>Check the most popular place today</h1>
 
-
-{{#each posts}}
-
-<div>
-    <hr>
-
-    <h3>{{this.title}}</h3>
-
-    <p>{{this.content}}</p>
-
-    <p>by: {{this.author.username}}</p>
-
-    <hr>
-    <button class='LikesBtn' name={{this._id}}>Likes</button>
-
-    {{#if this.owned}}
-
-    <form action="/posts/delete/{{this._id}}" method="POST"><button>Delete This Post</button></form>
-
-    <button>
-
-      <a href="/posts/edit/{{this._id}}">Edit This Post</a>
-
-    </button>
-    {{/if}}
-    
-    <div class="comments-sec">
-      {{#each this.comments}}
-        <h5>by {{this.author.username}}</h5>
-        <p>{{this.content}}</p>
-        {{#if this.owned}}
-          <button class='comment-delete' name={{../this._id}} id={{this._id}}>Delete</button>
-        {{/if}}
+  <div class="dropdown">
+    <h3>Filter by:</h3>
+    <select name="select-country" onchange="location = this.value;">
+      <option value="">Select-country</option>
+      {{#each countries}}
+        <option value="/posts/{{this}}">{{this}}</option>
       {{/each}}
-    </div>
+    </select>
+  </div>
 
-    <div>
-      <h5>comments</h5>
-      <input type="text" class='comments' id={{this._id}}>
-      <button class='comments-btn'>reply</button>
-    </div>
+  {{#each posts}}
+
+  <div class='eachPost-layout'>
+
+      <div class="title">
+
+        <h3>{{this.author.username}}</h3>
+
+        {{#if this.owned}}
+          <div>
+
+            <form action="/posts/delete/{{this._id}}" method="POST">
+              <button class="deleteBtn"><img src="/images/delete.png" alt="deleteBtn"></button>
+            </form>
+
+            <button class="editBtn">
+              <a href="/posts/edit/{{this._id}}"><img src="/images/edit.png" alt="editBtn"></a>
+            </button>
+
+          </div>
+        {{/if}}
+      </div>
 
 
-</div>
+      <div class="content">
 
-{{/each}}
+        <h1>{{this.title}}</h1>
+
+        <img src="{{this.img}}">
+
+        <p>{{this.content}}</p>
+          
+          <button class='LikesBtn' name={{this._id}}>Likes {{this.likes.length}}</button>
+          
+          <button class="viewComments">Comments</button>
+        
+      </div>
+      
+      <div class="comments-sec hidden">
+        
+        {{#each this.comments}}
+          <div class='eachComment'>
+
+            <p><b>{{this.author.username}}:</b> {{this.content}}</p>
+            {{#if this.owned}}
+              <button class='comment-delete' name={{../this._id}} id={{this._id}}><img src="/images/delete.png" alt="deleteBtn"></button>
+            {{/if}}
+
+          </div>
+        {{/each}}
+      </div>
+
+      <div>
+        <input type="text" class='comments' id={{this._id}} value="Add a comment">
+        <button class='comments-btn'>reply</button>
+      </div>
+
+  </div>
+
+  {{/each}}
+
+</section>

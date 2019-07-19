@@ -1,5 +1,70 @@
 body{
   margin:0 0;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+//landing Page 
+.home-page{
+  background-image: url('../images/background4.jpg');
+  opacity:0.9;
+  height:800px;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+}
+
+.main-sec{
+  width:641px;
+  position: absolute;
+  right:12%;
+  top:30%;
+  color:#F3F3F3;
+}
+
+.main-sec > p{
+  font-size:50px;
+  text-align:justify;
+  // font-weight:900;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  line-height: 100px;
+}
+
+.main-sec > h2{
+  font-size:35px;
+  text-align:right;
+  margin-top: 0;
+  font-weight:750;
+}
+
+.info{
+  height:300px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  border-top: solid 2px;
+}
+
+.info > div {
+  width:20%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:30px;
+  text-align: center;
+  margin:20px 35px;
+}
+.info p{
+  font-size:20px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-weight: bold;
+  background: -webkit-linear-gradient(#42413E,rgb(161, 157, 157));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.info img{
+  width:100px;
 }
 
 .nav-bar{
@@ -10,19 +75,32 @@ body{
   box-shadow:0px -8px 11px 11px #888888;
 }
 
-.nav-bar > img{
-  width:80px;
-  height:80px;
-  margin:5px 30px;
+.logo-part{
+  display:flex;
+  flex-direction: row;
+}
+.logo-part > img{
+  width:70px;
+  height:70px;
+  margin-left:30px;
+}
+.logo-part > a{
+  text-decoration:none;
+  font-size:37px;
+  margin:0 0px;
+  padding-top:10px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  color:black;
+  font-weight:bold;
 }
 
-.nav-bar > div{
+.sign-part{
   display:flex;
   justify-content: center;
   align-items: center;
   margin-right:20px;
 }
-.nav-bar > div >  a{
+.sign-part > a{
   text-decoration: none;
   margin:10px 10px;
   padding:10px;
@@ -34,35 +112,75 @@ body{
   -webkit-text-fill-color: transparent;
 }
 
-.home-page{
-  background-image: url('../images/background5.jpg');
-  height:700px;
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center;
+
+
+.LogOutBtn{
+  border-style:none;
+  margin:10px 10px;
+  padding:10px;
+  font-size:25px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-weight:bold;
+  background: -webkit-linear-gradient(white,#42413E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.Post-layout{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  width:90%;
+  border:solid;
+  margin:67px;
+  border-radius:10px;
+}
+
+.Post-layout > h1{
+  font-size:50px;
 }
 
 
 
-
 .dropbtn {
-  background-color: #3498DB;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  background-color:#F3F3F3;
   border-radius:4px;
-  color: white;
-  padding: 16px;
+  padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
 }
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+  background-color: #9B9B9B;
 }
+
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items:center;
+  width:50%;
+}
+
+.dropdown-sec1{
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+}
+.dropdown-sec1 *{
+  margin:10px;
+}
+
+
+.dropdown > h3{
+  display:inline-block;
+  font-size:30px;
+  margin-right:30px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -89,3 +207,206 @@ body{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+
+.eachPost-layout{
+  width:50%;
+  border:solid;
+  margin:30px;
+  padding:25px 45px;
+  border-radius:10px;
+}
+
+.eachPost-layout > h3{
+  font-size:30px;
+  margin:0 0;
+  display:inline-block;
+}
+
+
+.deleteBtn, .editBtn,.comment-delete{
+  border-style: none;
+}
+
+.deleteBtn > img, .editBtn > a > img, .comment-delete > img{
+  width:20px;
+}
+
+.title{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.title > h3{
+  font-weight:normal;
+}
+
+.title > div{
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+}
+
+.title > div > form, .title > div > button{
+  height:20px;
+}
+
+.eachComment{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  margin:10px;
+}
+
+
+.Post-layout > a {
+  display:inline-block;
+}
+
+
+
+.sign{
+  width: 93%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password] {
+  background-color: #ddd;
+  outline: none;
+}
+
+.content > img{
+  width:648px;
+}
+
+.content > h1{
+  margin-bottom: 5px;
+  font-size:30px;
+}
+
+.content > p{
+  margin-top: 0px;
+  font-size:20px;
+}
+
+
+.comments{
+  width:80%;
+}
+
+
+
+/* Extra styles for the cancel button */
+.cancelbtn,.signupbtn,.loginbtn,.sign-part > button{
+  border:none;
+  margin:10px 10px;
+  padding:10px;
+  font-size:25px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-weight:bold;
+  background: -webkit-linear-gradient(white,#42413E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity:0.8;   
+  padding: 14px;
+}
+
+
+.cancelbtn:hover,.signupbtn:hover,.loginbtn:hover{
+  opacity:1;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content1 {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 27%;
+  top: 18%;
+  font-size: 51px;
+  color: #42413E;
+  opacity:0.8;
+}
+
+.close:hover,
+.close:focus {
+  opacity:1;
+  cursor: pointer;
+}
+
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+.hidden{
+  display:none;
+}
+
+.createBtn > img{
+  width:50px;
+}
+
+.new-post{
+  border:solid;
+}
+
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 700px) {
+
+  .main-sec p {
+    font-size: 3 0px;
+    text-align: justify;
+    font-weight: 900;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    line-height: 100px;
+
+  }
+
+  .main-sec {
+    width: 400px;
+  }
+
+
+
+}

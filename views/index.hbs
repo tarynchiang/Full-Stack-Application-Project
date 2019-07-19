@@ -1,16 +1,80 @@
-
 <div class='home-page'>
-<nav class="nav-bar">
-    <img src="images/logo.png" alt="logo">
-    <div>
-        <a href="/signup">Sign up</a>
-        <a href="/login">Log In</a>
+    <nav class="nav-bar">
+        <div class='logo-part'>
+            <img src="/images/logo.png" alt="logo">
+            <a>Tragoler</a>
+        </div>
+
+        <div class='sign-part'>
+        <button onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
+            <div id="id01" class="modal1">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <form class="modal-content1" action="/signup" method='POST'>
+                    <div class="container">
+                        <h1>Sign Up Today;)</h1>
+                        <p>time to make a new friend and travel together</p>
+                        <hr>
+                        <label>Name</label>
+                        <input type="text" name="theName" class='sign'>
+
+                        <label>Username</label>
+                        <input type="text" name="theUsername" class='sign'>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <label>Password</label>
+                        <input type="password" name="thePassword" class='sign'>
+
+                        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms &
+                                Privacy</a>.</p>
+                        <div class="clearfix">
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                            <button type="submit" class="signupbtn">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        <button onclick="document.getElementById('id02').style.display='block'">Log In</button>
+            <div id="id02" class="modal1">
+                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <form class="modal-content1" action="/login" method='POST'>
+                    <div class="container">
+                        <h1>Log In</h1>
+                        <hr>
+
+                        <label>Username</label>
+                        <input type="text" name="username" class='sign'>
+
+                        <label>Password</label>
+                        <input type="password" name="password" class='sign'>
+
+                        <div class="clearfix">
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                            <button type="submit" class="loginbtn">Log In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class='main-sec'>
+        <p>“The gladdest moment in human life is a departure into unknown lands.”</p>
+        <h2>– Sir Richard Burton</h2>
     </div>
-</nav>
 </div>
 
+<div class='info'>
+    <div>
+        <img src="/images/story.png" alt="story">
+        <p>Share your awesome experience about your trip</p>
+    </div>
 
+    <div>
+        <img src="/images/small-talk.png" alt="tripbuddy">
+        <p>Don't want be a solo traveler??<br>Find a trip buddy!</p>
+    </div>
 
-{{!-- <form action="/logout" method="POST">
-    <button>Log Out</button>
-</form> --}}
+    <div>
+        <img src="/images/b2b.png" alt="friend">
+        <p>Meet new friend from all over the world:)</p>
+    </div>
+</div>
