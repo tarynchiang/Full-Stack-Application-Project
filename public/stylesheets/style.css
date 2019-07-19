@@ -341,6 +341,22 @@ select {
   width: 213px;
   background-color: #F3F3F3; }
 
+.new-post {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto; }
+
+.new-post * {
+  margin: 20px;
+  padding: 15px; }
+
+.new-post label {
+  font-size: 40px; }
+
+.file-upload {
+  font-size: 16px; }
+
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 700px) {
   .main-sec p {
