@@ -12,7 +12,7 @@
 
 <section class='Post-layout'>
 
-  <h1>posts with Country</h1>
+  <h1>{{country}} Post</h1>
 
   <div class="dropdown">
     <select name="select-city" onchange="location = this.value;">
@@ -51,7 +51,8 @@
 
     </div>
 
-    
+    <div class="content">
+
      <h1>{{this.title}}</h1>
 
      <img src="{{this.img}}">
@@ -61,6 +62,8 @@
     <button class='LikesBtn' name={{this._id}}>Likes {{this.likes.length}}</button>
     <button class="viewComments">Comments</button>
         
+    </div>
+
 
     <div class="comments-sec">
         {{#each this.comments}}
