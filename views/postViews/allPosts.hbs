@@ -19,7 +19,7 @@
     <select name="select-country" onchange="location = this.value;">
       <option value="">Select-country</option>
       {{#each countries}}
-        <option value="/posts/{{this}}">{{this}}</option>
+        <option value="/posts/{{this}}"  class='opt'>{{this}}</option>
       {{/each}}
     </select>
   </div>
@@ -56,9 +56,9 @@
 
         <p>{{this.content}}</p>
           
-          <button class='LikesBtn' name={{this._id}}>Likes {{this.likes.length}}</button>
+          <button class='LikesBtn' name={{this._id}}><img src="/images/heart.png" alt="heart"> <span>{{this.likes.length}}</span></button>
           
-          <button class="viewComments">Comments</button>
+          <button class="viewComments"><img src="/images/comment.png" alt="comment"></button>
         
       </div>
       

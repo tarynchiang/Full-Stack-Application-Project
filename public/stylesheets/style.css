@@ -115,7 +115,6 @@ body {
   flex-direction: column;
   align-items: center;
   width: 90%;
-  border: solid;
   margin: 67px;
   border-radius: 10px; }
 
@@ -140,15 +139,19 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 50%; }
+  width: 62%; }
 
 .dropdown-sec1 {
   display: flex;
   flex-direction: row;
-  align-items: center; }
+  align-items: center;
+  margin-right: 10px; }
 
 .dropdown-sec1 * {
   margin: 10px; }
+
+.dropdown-sec1 > h3 {
+  font-size: 26px; }
 
 .dropdown > h3 {
   display: inline-block;
@@ -191,10 +194,10 @@ body {
   margin: 0 0;
   display: inline-block; }
 
-.deleteBtn, .editBtn, .comment-delete {
+.deleteBtn, .editBtn, .comment-delete, .LikesBtn, .viewComments {
   border-style: none; }
 
-.deleteBtn > img, .editBtn > a > img, .comment-delete > img {
+.deleteBtn > img, .editBtn > a > img, .comment-delete > img, .LikesBtn > img, .viewComments > img {
   width: 20px; }
 
 .title {
@@ -329,6 +332,14 @@ hr {
 
 .new-post {
   border: solid; }
+
+.LikesBtn > span {
+  font-size: 20px; }
+
+select {
+  font-size: 25px;
+  width: 213px;
+  background-color: #F3F3F3; }
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 700px) {

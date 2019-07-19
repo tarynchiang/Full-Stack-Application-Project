@@ -15,12 +15,17 @@
   <h1>{{country}} Post</h1>
 
   <div class="dropdown">
-    <select name="select-city" onchange="location = this.value;">
-      <option value="">Select-City</option>
-      {{#each cities}}
-        <option value="/posts/{{../country}}/{{this}}">{{this}}</option>
-      {{/each}}
-    </select>
+
+    <div class='dropdown-sec1'>
+      <h3>Filter by:</h3>
+      <select name="select-city" onchange="location = this.value;">
+        <option value="">Select-City</option>
+        {{#each cities}}
+          <option value="/posts/{{../country}}/{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+      
+    </div>
     
     <a href="/posts/create-new/{{country}}" class="createBtn"><img src="/images/create.png" alt="create"></a>
   </div>
