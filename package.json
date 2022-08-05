@@ -20,7 +20,7 @@
     "express-session": "^1.16.2",
     "full-countries-cities": "0.0.9",
     "hbs": "^4.0.1",
-    "mongoose": "^5.2.10",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.0",
     "multer": "^1.4.1",
     "multer-storage-cloudinary": "^2.2.1",
